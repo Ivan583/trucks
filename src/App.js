@@ -23,9 +23,18 @@ useEffect(() => {
   localStorage.setItem('flights', JSON.stringify(flights));
 }, [flights]);
 
+const cleaner = () => {  
+  localStorage.clear();
+  setFlights([]);
+};
+
   return (
     <div className="App">
       <div className={'btns'}>
+        <MyButton onClick={cleaner}>
+          Clear Storage
+        </MyButton>
+
         <MyButton onClick={() => setModal(true)} >
           Add new flight
         </MyButton>

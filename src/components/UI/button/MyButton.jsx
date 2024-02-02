@@ -1,10 +1,11 @@
 import React from "react";
+import classes from "./MyButton.module.css";
 
-export default function MyButton() {
+export default function MyButton({children, ...props}) {
 
     return (
-        <button>
-
+        <button className={classes.myBtn} {...props}>
+            {children}
         </button>
     );
 }

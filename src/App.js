@@ -13,6 +13,8 @@ const [flights, setFlights] = useState([
 const [driver, setDriver] = useState('')
 const [weight, setWeight] = useState(0)
 
+const block = !!driver.trim() && !!weight
+
 const addNewFlight = e => {
   e.preventDefault();
   const newFlight = {
@@ -40,7 +42,9 @@ const addNewFlight = e => {
         type="number" 
         placeholder="weight" />
 
-        <MyButton onClick={addNewFlight}>Add flight</MyButton>
+        <MyButton 
+        disabled={!block} 
+        onClick={addNewFlight}>Add flight</MyButton>
       </form>
 
       <FlightList flights={flights} />

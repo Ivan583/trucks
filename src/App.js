@@ -1,5 +1,5 @@
 import { useState } from "react";
-import FlightItem from "./components/FlightItem";
+import FlightList from "./components/FlightList";
 
 function App() {
 const [flights, setFlights] = useState([
@@ -10,10 +10,7 @@ const [flights, setFlights] = useState([
 
   return (
     <div className="App">
-      <h1>React Project</h1>
-        {flights.map(flight => 
-          <FlightItem flight={flight} key={flight.id} />
-          )}
+      <FlightList flights={flights} />
     </div>
   );
 }

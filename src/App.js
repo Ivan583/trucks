@@ -21,6 +21,8 @@ const addNewFlight = e => {
     weight
   };
   setFlights([...flights, newFlight]);
+  setDriver('');
+  setWeight(0);
 }
 
   return (

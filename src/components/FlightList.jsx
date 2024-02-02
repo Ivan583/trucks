@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import FlightItem from "./FlightItem";
 
 export default function FlightList ({flights}) {
@@ -11,4 +12,8 @@ export default function FlightList ({flights}) {
             )}
         </div>
         );
+
+        FlightList.propTypes = {
+            flights: PropTypes.arrayOf(PropTypes.object).isRequired
+        }
 }

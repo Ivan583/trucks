@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export default function FlightItem(props) {
     return (
@@ -7,4 +8,8 @@ export default function FlightItem(props) {
             <div>weight: {props.flight.weight}</div>
         </div>
     );
+
+    FlightItem.propTypes = {
+        flight: PropTypes.object.isRequired
+    }
 }

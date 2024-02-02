@@ -1,6 +1,7 @@
 import { useState } from "react";
 import FlightList from "./components/FlightList";
 import MyButton from "./components/UI/button/MyButton";
+import MyInput from "./components/UI/input/MyInput";
 
 function App() {
 const [flights, setFlights] = useState([
@@ -12,8 +13,8 @@ const [flights, setFlights] = useState([
   return (
     <div className="App">
       <form>
-        <input type="text" placeholder="driver" />
-        <input type="number" placeholder="0" />
+        <MyInput type="text" placeholder="driver" />
+        <MyInput type="number" placeholder="0" />
         <MyButton>Add flight</MyButton>
       </form>
 

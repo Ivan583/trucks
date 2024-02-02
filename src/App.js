@@ -1,11 +1,10 @@
+import FlightItem from "./components/FlightItem";
+
 function App() {
   return (
     <div className="App">
       <h1>React Project</h1>
-      <div className="flight">
-        <div>driver: Chuck Norris</div>
-        <div>weight: 5700</div>
-      </div>
+        <FlightItem />
     </div>
   );
 }

@@ -10,35 +10,28 @@ const [flights, setFlights] = useState([
   {id: 1, driver: 'Bolo Yeung', weight: 5900},
 ])
 
-const [driver, setDriver] = useState('')
-const [weight, setWeight] = useState(0)
+const [flight, setFlight] = useState({driver: '', weight: 0});
 
-const block = !!driver.trim() && !!weight
+const block = !!flight.driver.trim() && !!flight.weight
 
 const addNewFlight = e => {
   e.preventDefault();
-  const newFlight = {
-    id: Date.now(),
-    driver,
-    weight
-  };
-  setFlights([...flights, newFlight]);
-  setDriver('');
-  setWeight(0);
+  setFlights([...flights, {...flight, id: Date.now()}]);
+  setFlight({driver: '', weight: 0});
 }
 
   return (
     <div className="App">
       <form>
         <MyInput 
-        value={driver}
-        onChange={e => setDriver(e.target.value)}
+        value={flight.driver}
+        onChange={e => setFlight({...flight, driver: e.target.value})}
         type="text" 
         placeholder="driver" />
 
         <MyInput 
-        value={weight} 
-        onChange={e => setWeight(parseInt(e.target.value))} 
+        value={flight.weight} 
+        onChange={e => setFlight({...flight, weight: parseInt(e.target.value)})} 
         type="number" 
         placeholder="weight" />
 

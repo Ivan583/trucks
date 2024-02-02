@@ -10,6 +10,12 @@ const [flights, setFlights] = useState([
 
   return (
     <div className="App">
+      <form>
+        <input type="text" placeholder="driver" />
+        <input type="number" placeholder="0" />
+        <button>Add flight</button>
+      </form>
+
       <FlightList flights={flights} />
     </div>
   );

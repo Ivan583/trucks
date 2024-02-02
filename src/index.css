@@ -29,5 +29,5 @@ h1 {
 .btns {
   display: flex;
   justify-content: space-evenly;
-  margin-top: 25px;
+  margin: 15px 0;
 }

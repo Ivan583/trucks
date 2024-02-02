@@ -3,11 +3,12 @@ import FlightList from "./components/FlightList";
 import FlightForm from "./components/FlightForm";
 import MyButton from "./components/UI/button/MyButton";
 import MyModal from "./components/UI/modal/MyModal";
+import MyInput from "./components/UI/input/MyInput";
 
 function App() {
 const [flights, setFlights] = useState([]);
-
 const [modal, setModal] = useState(false);
+const [searchQuery, setSearchQuery] = useState('');
 
 const createFlight = newFlight => {
   setFlights([...flights, newFlight]);
@@ -39,6 +40,11 @@ const cleaner = () => {
           Add new flight
         </MyButton>
       </div>
+
+      <MyInput 
+       value={searchQuery} 
+       onChange={e => setSearchQuery(e.target.value)} 
+       placeholder="...search" />
 
       <MyModal visible={modal} setVisible={setModal} >
         <FlightForm create={createFlight} />

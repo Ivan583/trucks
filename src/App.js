@@ -1,15 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FlightList from "./components/FlightList";
 import FlightForm from "./components/FlightForm";
 import MyButton from "./components/UI/button/MyButton";
 import MyModal from "./components/UI/modal/MyModal";
 
 function App() {
-const [flights, setFlights] = useState([
-  {id: 1, driver: 'Chuck Norris', weight: 5700},
-  {id: 2, driver: 'Steven Seagel', weight: 5400},
-  {id: 1, driver: 'Bolo Yeung', weight: 5900},
-])
+const [flights, setFlights] = useState([]);
 
 const [modal, setModal] = useState(false);
 
@@ -17,6 +13,15 @@ const createFlight = newFlight => {
   setFlights([...flights, newFlight]);
   setModal(false);
 }
+
+useEffect(() => {
+  const list = localStorage.getItem('flights') || [];
+  setFlights(JSON.parse(list));
+}, []);
+
+useEffect(() => {
+  localStorage.setItem('flights', JSON.stringify(flights));
+}, [flights]);
 
   return (
     <div className="App">

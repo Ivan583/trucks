@@ -25,3 +25,9 @@ h1 {
   color: darkgreen;
   margin-bottom: 10px;
 }
+
+.btns {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 25px;
+}

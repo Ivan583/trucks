@@ -4,6 +4,8 @@ import FlightForm from "./components/FlightForm";
 import MyButton from "./components/UI/button/MyButton";
 import MyModal from "./components/UI/modal/MyModal";
 import MyInput from "./components/UI/input/MyInput";
+import { useSortedFlights, useTotalSummary } 
+from "./utils/useFlights";
 
 function App() {
 const [flights, setFlights] = useState([]);
@@ -29,27 +31,10 @@ const cleaner = () => {
   setFlights([]);
 };
 
-const filteredFlights = [...flights]
-.filter(flight => flight.driver.toLowerCase()
-.includes(searchQuery.toLowerCase()));
+const sortedAndFilteredFlights = 
+useSortedFlights(flights, 'weight', searchQuery);
 
-const drivers = filteredFlights
-.map(flight => flight.driver)
-.reduce((acc, curr) => acc.includes(curr) ? acc : [...acc, curr], [])
-
-const groupSummary = drivers.map(driver => {
-  let summ = filteredFlights
-  .filter(item => item.driver === driver)
-  .map(flight => flight.weight)
-  .reduce((acc, curr) => acc + curr, 0);
-  return {driver, weight: summ};
-});
-
-const sortedFlights = groupSummary
-.sort((a, b) => b['weight'] - a['weight']);
-
-const totalSummary = sortedFlights
-.map(item => item.weight).reduce((acc, curr) => acc + curr, 0);
+const totalSummary = useTotalSummary(sortedAndFilteredFlights);
 
   return (
     <div className="App">
@@ -72,7 +57,9 @@ const totalSummary = sortedFlights
         <FlightForm create={createFlight} />
       </MyModal>    
 
-      <FlightList flights={sortedFlights} total={totalSummary} />
+      <FlightList
+       flights={sortedAndFilteredFlights} 
+       total={totalSummary} />
     </div>
   );
 }

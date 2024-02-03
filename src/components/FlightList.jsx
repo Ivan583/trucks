@@ -2,11 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import FlightItem from "./FlightItem";
 
-export default function FlightList ({flights}) {
+export default function FlightList ({flights, total}) {
 
     return (
         <div>
-        <h1>Total weight: </h1>
+        <h1>Total weight: {total} </h1>
         {flights.map(flight => 
             <FlightItem flight={flight} key={flight.driver} />
             )}
@@ -14,6 +14,7 @@ export default function FlightList ({flights}) {
         );
 
         FlightList.propTypes = {
-            flights: PropTypes.arrayOf(PropTypes.object).isRequired
+            flights: PropTypes.arrayOf(PropTypes.object).isRequired,
+            total: PropTypes.object.isRequired
         }
 }

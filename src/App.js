@@ -29,6 +29,10 @@ const cleaner = () => {
   setFlights([]);
 };
 
+const filteredFlights = [...flights]
+.filter(flight => flight.driver.toLowerCase()
+.includes(searchQuery.toLowerCase()));
+
   return (
     <div className="App">
       <div className={'btns'}>
@@ -48,9 +52,9 @@ const cleaner = () => {
 
       <MyModal visible={modal} setVisible={setModal} >
         <FlightForm create={createFlight} />
-      </MyModal>      
+      </MyModal>    
 
-      <FlightList flights={flights} />
+      <FlightList flights={filteredFlights} />
     </div>
   );
 }

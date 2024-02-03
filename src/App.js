@@ -45,6 +45,9 @@ const groupSummary = drivers.map(driver => {
   return {driver, weight: summ};
 });
 
+const sortedFlights = groupSummary
+.sort((a, b) => b['weight'] - a['weight']);
+
   return (
     <div className="App">
       <div className={'btns'}>
@@ -66,7 +69,7 @@ const groupSummary = drivers.map(driver => {
         <FlightForm create={createFlight} />
       </MyModal>    
 
-      <FlightList flights={groupSummary} />
+      <FlightList flights={sortedFlights} />
     </div>
   );
 }

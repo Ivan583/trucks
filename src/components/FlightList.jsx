@@ -8,7 +8,7 @@ export default function FlightList ({flights}) {
         <div>
         <h1>Total weight: </h1>
         {flights.map(flight => 
-            <FlightItem flight={flight} key={flight.id} />
+            <FlightItem flight={flight} key={flight.driver} />
             )}
         </div>
         );

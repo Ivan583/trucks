@@ -33,6 +33,18 @@ const filteredFlights = [...flights]
 .filter(flight => flight.driver.toLowerCase()
 .includes(searchQuery.toLowerCase()));
 
+const drivers = filteredFlights
+.map(flight => flight.driver)
+.reduce((acc, curr) => acc.includes(curr) ? acc : [...acc, curr], [])
+
+const groupSummary = drivers.map(driver => {
+  let summ = filteredFlights
+  .filter(item => item.driver === driver)
+  .map(flight => flight.weight)
+  .reduce((acc, curr) => acc + curr, 0);
+  return {driver, weight: summ};
+});
+
   return (
     <div className="App">
       <div className={'btns'}>
@@ -54,7 +66,7 @@ const filteredFlights = [...flights]
         <FlightForm create={createFlight} />
       </MyModal>    
 
-      <FlightList flights={filteredFlights} />
+      <FlightList flights={groupSummary} />
     </div>
   );
 }

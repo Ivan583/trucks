@@ -18,7 +18,7 @@ const createFlight = newFlight => {
 }
 
 useEffect(() => {
-  const list = localStorage.getItem('flights') || [];
+  const list = localStorage.getItem('flights') || '[]';
   setFlights(JSON.parse(list));
 }, []);
 
